@@ -13,7 +13,6 @@ body {
     min-height: 100vh;
     width: 100vw;
     font-family: "Roboto", sans-serif;
-    line-height: 1.5;
 }
 
 .wrapper {
@@ -22,6 +21,7 @@ body {
     margin: 0 auto;
     display: flex;
     justify-content: flex-start;
+    border: 1px solid #555;
     
 }
 
@@ -61,20 +61,21 @@ main {
 .main-head {
     height: 36%;
     background-color: #f9fafb;
-    color: #111;
+    color: #333;
     font-size: 16px;
     font-weight: 600;
     padding: 180px 0 0 50px;
 }
 
 .main-head p {
-    width: 550px;
+    width: 480px;
     margin-bottom: 25px;
 }
 
 .form-container {
     height: 30%;
     padding: 0 0 0 50px;
+    color: #333;
 }
 
 .form-container p {
@@ -105,6 +106,15 @@ input {
     height: 25px;
     border-radius: 3px;
     border: 1px solid #E5E7EB;
+    padding-left: 5px;
+}
+
+input:valid {
+    border: 1px solid yellowgreen;
+}
+
+input:user-invalid {
+    border: 1px solid red;
 }
 
 .main-bottom {

@@ -10,6 +10,54 @@
 
 <body>
     <script src="main.js"></script>
+
+    <div class="hero">
+        <div class="header">
+            <img src="./assets/images/odin-lined.png" alt="Odin's Logo" class="logo_image">
+            <span class="logo_text">Odin</span>
+        </div>
+    </div>
+    <main class="main">
+        <section class="section one">
+            <p>
+                This is not a real online service! You know you need something like this in your life to help you
+                realize
+                your deepest dreams. <br> Sign up <em>now</em> to get started.
+            </p>
+            <p>You know you want to.</p>
+        </section>
+        <form action="./" class="form" id="form">
+            <h2 class="form_title">Let's do this!</h2>
+            <div class="form_item">
+                <label for="first_name">first name</label>
+                <input type="text" name="first_name" id="first_name" required>
+            </div>
+            <div class="form_item">
+                <label for="last_name">last Name</label>
+                <input type="text" name="last_name" id="last_name" required>
+            </div>
+            <div class="form_item">
+                <label for="email">email</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+            <div class="form_item">
+                <label for="tel">phone number</label>
+                <input type="tel" name="tel" id="tel" required>
+            </div>
+            <div class="form_item">
+                <label for="pwd">password</label>
+                <input type="password" name="pwd" id="pwd" required>
+            </div>
+            <div class="form_item">
+                <label for="pwd-conf">confirm password</label>
+                <input type="password" name="pwd-conf" id="pwd-conf" required>
+            </div>
+        </form>
+        <div class="section two">
+            <button type="submit" form="form" id="submit_btn">Create Account</button>
+            <p class="small_text">Already have an account? <a href="#">Log in</a></p>
+        </div>
+    </main>
 </body>
 
 </html>

@@ -1,0 +1,171 @@
+@font-face {
+    font-family: "Norse Bold";
+    src:
+        url(./assets/fonts/Norse-Bold.woff2) format("woff2"),
+        url(./assets/fonts/Norse-Bold.woff) format("woff");
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    line-height: 1.2;
+    min-height: 100vh;
+    font-family: "Roboto", sans-serif;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* Typography */
+
+/* Layout */
+
+.hero {
+    background-color: #020601;
+    background-image: url(./assets/images/halie-west-25xggax4bSA-unsplash.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 35%;
+}
+
+.header {
+    align-items: center;
+    background-color: rgba(2, 6, 1, 0.4);
+    display: flex;
+    height: 150px;
+    justify-content: center;
+    margin-block-start: 10em;
+}
+
+.logo_image {
+    height: 130px;
+}
+
+.logo_text {
+    color: #fff;
+    font-family: "Norse Bold", sans-serif;
+    font-size: 5rem;
+}
+
+.main {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.section {
+    background-color: #f9fafb;
+    flex: 1;
+}
+
+.section {
+    padding: 2em;
+}
+
+.section.one {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 1em;
+}
+
+.section.one p {
+    max-width: 55ch;
+    font-weight: 600;
+}
+
+.section.two p {
+    font-size: 0.75rem;
+}
+
+.section.two a {
+    font-size: 0.75rem;
+    color: #596d48;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.section.two a:hover {
+    color: #698055;
+}
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 3em;
+    padding: 1em 2em;
+}
+
+.form_title {
+    width: 100%;
+    font-size: 1.2rem;
+    margin-block-end: 1em;
+}
+
+.form_item label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    padding-block-end: 0.25em;
+    letter-spacing: 0.1em;
+}
+
+.form_item input {
+    height: 28px;
+    width: 265px;
+    margin-block-end: 1em;
+    vertical-align: middle;
+    padding: 0.5em;
+    font-size: 0.75rem;
+    outline: none;
+    border: 1px solid #E5E7EB;
+    border-radius: 3px;
+}
+
+.submit_btn {
+    background-color: #596d48;
+    border: none;
+    padding: 0.75em 2em;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 700;
+    margin-block-end: 1.5em;
+    cursor: pointer;
+}
+
+.submit_btn:hover {
+    background-color: #698055;
+}
+
+/* Validation */
+
+.form_item input:focus {
+    border-color: lightblue;
+    box-shadow: 0 3px 7px rgb(230, 230, 230) ;
+}
+
+.form_item input:invalid {
+    border-color: red;
+}
+
+.form_item input:invalid ~ label {
+    color: red;
+}
+
+.form_item input:valid {
+    border-color: goldenrod;
+}
+
+
+
+
+
+
+
+

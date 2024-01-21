@@ -131,6 +131,7 @@ img {
     outline: none;
     border: 1px solid #E5E7EB;
     border-radius: 3px;
+    position: relative;
 }
 
 .submit_btn {
@@ -161,10 +162,12 @@ img {
 
 .invalid input {
     border: 1px solid red;
+    background-color: rgba(255, 0, 0, 0.1);
 }
 
 .valid input {
-    border: 1px solid green;
+    border: 1px solid lightblue;
+    background-color: rgba(173, 216, 230, 0.1);
 }
 
 .invalid .help {

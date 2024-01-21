@@ -4,18 +4,31 @@ window.addEventListener('load', () => {
     for (let element of form) {
         element.addEventListener('focusout', (e) => {
             validateField(e);
-        });
 
-        element.addEventListener('input', (e) => {
-            validateField(e);
+            /* Adds Input listener to field after the user has gotten out of the field. */
+            element.addEventListener('input', (e) => {
+                validateField(e);
+            });
         });
     };
+
+    form.addEventListener('submit', (e) => {
+        if (e.checkValidity) {
+            e.preventDefault();
+            console.log('Sent')
+        } else {
+            e.preventDefault();
+            console.log('Some fields are invalid, please correct!')
+        }
+    });
 })
+
+
 
 function validateField(e) {
     const element = e.target;
     const validity = element.validity;
-    
+
     switch (element.id) {
         case 'first_name':
             validateName(element, 'First name is required');
@@ -37,7 +50,7 @@ function validateField(e) {
 
 function validateName(element, message) {
     if (element.value != '') {
-        isValid(element);
+        isValid(element, 'Name is valid');
     } else {
         isInvalid(element, message)
     }
@@ -47,7 +60,7 @@ function validateEmail(element) {
     const emailRegex = /^(\w+)([\.\-\_])?(\w+)@([a-zA-Z]+)(\.[a-zA-Z]{2,3})(\.[a-zA-Z]{2,3})?$/gm;
 
     if (emailRegex.test(element.value)) {
-        isValid(element);
+        isValid(element, 'Email is valid');
     } else {
         isInvalid(element, 'Please enter a valid email address');
     }
@@ -56,10 +69,8 @@ function validateEmail(element) {
 function validatePassword(element) {
     const pwdRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,16}$/g
 
-    console.log(element.value);
-
     if (pwdRegex.test(element.value)) {
-        isValid(element)
+        isValid(element, 'Password is valid');
     } else {
         isInvalid(element, 'Must include 8-16 characters, an uppercase/lowercase and a number');
     }
@@ -74,15 +85,15 @@ function confirmPassword(element) {
     } else if (confirmation.value === '') {
         isInvalid(element, 'Please confirm your password');
     } else {
-        isValid(element);
+        isValid(element, 'Password is valid');
     }
 
 }
 
-function isValid(element) {
+function isValid(element, message) {
     element.parentElement.classList.remove('invalid')
     element.parentElement.classList.add('valid')
-    element.nextElementSibling.textContent = '';
+    element.nextElementSibling.textContent = message || '';
 }
 
 function isInvalid(element, message) {

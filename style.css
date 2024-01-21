@@ -109,7 +109,7 @@ img {
 }
 
 .form_item {
-    padding-block-end: 0.50em;
+    padding-block-end: 0.5em;
     position: relative;
 }
 
@@ -142,7 +142,9 @@ img {
     font-weight: 700;
     margin-block-end: 1.5em;
     cursor: pointer;
+    outline: none;
 }
+
 
 .submit_btn:hover {
     background-color: #698055;

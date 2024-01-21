@@ -14,54 +14,79 @@ window.addEventListener('load', () => {
 
 function validateField(e) {
     const element = e.target;
-    const parentEl = element.parentElement;
-    const errorHelp = element.nextElementSibling;
-
     const validity = element.validity;
-
-    let message;
-
+    
     switch (element.id) {
         case 'first_name':
-            message = "First name is required";
+            validateName(element, 'First name is required');
             break;
         case 'last_name':
-            message = "Last name is required";
+            validateName(element, 'Last name is required');
             break;
         case 'email':
-            message = 'Please enter a valid email address'
+            validateEmail(element);
             break;
         case 'pwd':
-            message = 'A password is required';
+            validatePassword(element);
             break;
         case 'pwd-conf':
-            message = validatePassword() || 'You must confirm you password';
+            confirmPassword(element);
             break;
-    }
-
-    if (validity.valueMissing || validity.typeMismatch || validatePassword()) {
-        parentEl.classList.add('invalid');
-        parentEl.classList.remove('valid');
-        errorHelp.textContent = message;
-    } else {
-        parentEl.classList.add('valid');
-        parentEl.classList.remove('invalid');
-        errorHelp.textContent = '';
     }
 }
 
-function validatePassword() {
-    const pwd = document.querySelector('#pwd');
-    const pwdConf = document.querySelector('#pwd-conf');
+function validateName(element, message) {
+    if (element.value != '') {
+        isValid(element);
+    } else {
+        isInvalid(element, message)
+    }
+}
 
-    let message = null;
+function validateEmail(element) {
+    const emailRegex = /^(\w+)([\.\-\_])?(\w+)@([a-zA-Z]+)(\.[a-zA-Z]{2,3})(\.[a-zA-Z]{2,3})?$/gm;
 
-    
-    if (pwd.value != pwdConf.value) {
-        message = 'Passwords do not match';
+    if (emailRegex.test(element.value)) {
+        isValid(element);
+    } else {
+        isInvalid(element, 'Please enter a valid email address');
+    }
+}
+
+function validatePassword(element) {
+    const pwdRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,16}$/g
+
+    console.log(element.value);
+
+    if (pwdRegex.test(element.value)) {
+        isValid(element)
+    } else {
+        isInvalid(element, 'Must include 8-16 characters, an uppercase/lowercase and a number');
+    }
+}
+
+function confirmPassword(element) {
+    const password = document.querySelector('#pwd');
+    const confirmation = element;
+
+    if (password.value != confirmation.value) {
+        isInvalid(element, 'Passwords do not match');
+    } else if (confirmation.value === '') {
+        isInvalid(element, 'Please confirm your password');
+    } else {
+        isValid(element);
     }
 
-    console.log(message);
+}
 
-    return message;
+function isValid(element) {
+    element.parentElement.classList.remove('invalid')
+    element.parentElement.classList.add('valid')
+    element.nextElementSibling.textContent = '';
+}
+
+function isInvalid(element, message) {
+    element.parentElement.classList.remove('valid')
+    element.parentElement.classList.add('invalid')
+    element.nextElementSibling.textContent = message;
 }
